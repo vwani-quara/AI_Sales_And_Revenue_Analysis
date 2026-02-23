@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Sales & Revenue Platforms — Competitive Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0b0f;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8eaf0;
+    --muted: #7a7f94;
+    --accent1: #6c63ff;   /* Alta – purple */
+    --accent2: #00d2a4;   /* Revenue.io – teal */
+    --accent3: #ff6b35;   /* 11x – orange */
+    --accent4: #3b9eff;   /* Taalk – blue */
+    --gold: #f5c542;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 60px 60px 50px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 60% -10%, rgba(108,99,255,0.18), transparent),
+                radial-gradient(ellipse 50% 40% at 20% 110%, rgba(0,210,164,0.10), transparent);
+    pointer-events: none;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .header-left { flex: 1; min-width: 280px; }
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .header-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  header h1 span {
+    background: linear-gradient(135deg, #6c63ff, #00d2a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header-meta {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .meta-pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent1);
+    flex-shrink: 0;
+  }
+  .header-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hdr-platform-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 18px;
+    min-width: 220px;
+  }
+  .hdr-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .hdr-platform-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .hdr-platform-tag {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1400px; margin: 0 auto; padding: 0 40px 80px; }
+
+  section { margin-top: 72px; }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  h2 .section-num {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  /* ── PLATFORM CARDS ── */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 24px;
+  }
+
+  .platform-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .platform-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .card-accent {
+    height: 4px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .platform-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .platform-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .platform-tagline {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .platform-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #adb1c4;
+    margin-bottom: 24px;
+  }
+
+  .feature-list-wrap {
+    flex: 1;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feature-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: #c0c4d8;
+  }
+  .feature-list li .icon {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; margin-top: 1px;
+  }
+
+  /* ── QUICK STAT BARS ── */
+  .stat-row {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stat-item label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .bar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+    height: 5px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.8s ease;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+  }
+  thead tr {
+    background: var(--surface2);
+  }
+  th {
+    padding: 18px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th:first-child { color: var(--muted); font-weight: 400; }
+  td {
+    padding: 14px 20px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(odd) td { background: rgba(255,255,255,0.015); }
+
+  .check { color: #4cde80; font-size: 16px; }
+  .cross { color: #ff5a5a; font-size: 16px; }
+  .partial { color: var(--gold); font-size: 13px; }
+
+  /* ── SCORE CARDS ── */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .score-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .score-card .platform-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .score-row {
+    margin-bottom: 14px;
+  }
+  .score-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .score-label span:last-child { font-weight: 500; color: var(--text); }
+  .score-bar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 99px;
+    height: 6px;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+  }
+  .total-score {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .total-score .label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .total-score .value {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  /* ── RECOMMENDATION BANNER ── */
+  .rec-banner {
+    background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,210,164,0.10));
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 18px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .rec-banner h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .rec-banner p { font-size: 14px; color: #adb1c4; line-height: 1.7; }
+  .rec-badge {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .rec-badge .winner {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .rec-badge .subtitle { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── USE CASE MATRIX ── */
+  .use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .use-case-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    background: var(--surface);
+  }
+  .use-case-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .use-case-card h4 .emoji { font-size: 18px; }
+  .use-case-list { list-style: none; }
+  .use-case-list li {
+    font-size: 13px;
+    color: #adb1c4;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .use-case-list li:last-child { border-bottom: none; }
+  .uc-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .best { background: rgba(76,222,128,0.15); color: #4cde80; }
+  .good { background: rgba(245,197,66,0.15); color: var(--gold); }
+  .ok   { background: rgba(255,90,90,0.12); color: #ff7a7a; }
+
+  footer {
+    margin-top: 80px;
+    padding: 32px 40px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+  footer p { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 768px) {
+    header { padding: 50px 24px 40px; }
+    main { padding: 0 20px 60px; }
+    .rec-banner { grid-template-columns: 1fr; }
+    h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ HEADER ══════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-label">Competitive Intelligence Report · February 2026</div>
+      <h1>AI Sales &amp; Revenue<br><span>Platform Analysis</span></h1>
+      <div class="header-meta">
+        <div class="meta-pill"><span class="dot" style="background:var(--muted)"></span> 4 Platforms Evaluated</div>
+        <div class="meta-pill"><span class="dot" style="background:#4cde80"></span> Feb 2026</div>
+        <div class="meta-pill"><span class="dot" style="background:var(--gold)"></span> Decision-Ready Report</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-platforms">
+        <div class="hdr-platform-row">
+          <div class="hdr-dot" style="background:var(--accent1)"></div>
+          <span class="hdr-platform-name" style="color:var(--accent1)">Alta HQ</span>
+          <span class="hdr-platform-tag">AI Workforce</span>
+        </div>
+        <div class="hdr-platform-row">
+          <div class="hdr-dot" style="background:var(--accent2)"></div>
+          <span class="hdr-platform-name" style="color:var(--accent2)">Revenue.io</span>
+          <span class="hdr-platform-tag">RevOps Platform</span>
+        </div>
+        <div class="hdr-platform-row">
+          <div class="hdr-dot" style="background:var(--accent3)"></div>
+          <span class="hdr-platform-name" style="color:var(--accent3)">11x.ai</span>
+          <span class="hdr-platform-tag">Digital Workers</span>
+        </div>
+        <div class="hdr-platform-row">
+          <div class="hdr-dot" style="background:var(--accent4)"></div>
+          <span class="hdr-platform-name" style="color:var(--accent4)">Taalk.ai</span>
+          <span class="hdr-platform-tag">Contact Center</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════ MAIN ══════════════════════ -->
+<main>
+
+  <!-- ── SECTION 1 · PLATFORM OVERVIEWS ── -->
+  <section>
+    <h2><span class="section-num">01</span> Platform Overviews</h2>
+    <div class="platform-grid">
+
+      <!-- ALTA HQ -->
+      <div class="platform-card">
+        <div class="card-accent" style="background: linear-gradient(90deg, var(--accent1), #9d97ff);"></div>
+        <div class="card-body">
+          <span class="platform-tag" style="background:rgba(108,99,255,0.15);color:var(--accent1);">AI Workforce</span>
+          <div class="platform-name">Alta HQ</div>
+          <div class="platform-tagline">altahq.com · Data-Driven AI Revenue Workforce</div>
+          <div class="platform-desc">Alta deploys autonomous AI "workers" — Katie (AI SDR), Alex (AI Calling Agent), and Luna (AI RevOps Agent) — that operate 24/7 to prospect, qualify, and manage revenue operations. Positioned as a full AI workforce replacement for top-of-funnel sales activities.</div>
+          <div class="feature-list-wrap"><ul class="feature-list">
+            <li><span class="icon" style="background:rgba(108,99,255,0.2);color:var(--accent1);">▸</span> Katie — AI SDR: multichannel outbound, hyper-personalized campaigns at scale</li>
+            <li><span class="icon" style="background:rgba(108,99,255,0.2);color:var(--accent1);">▸</span> Alex — AI Calling Agent: autonomous outbound & inbound voice calls</li>
+            <li><span class="icon" style="background:rgba(108,99,255,0.2);color:var(--accent1);">▸</span> Luna — AI RevOps Agent: 24/7 revenue operations & pipeline management</li>
+            <li><span class="icon" style="background:rgba(108,99,255,0.2);color:var(--accent1);">▸</span> Buying signal detection & automated prospect research</li>
+            <li><span class="icon" style="background:rgba(108,99,255,0.2);color:var(--accent1);">▸</span> SOC 2 compliant · Enterprise-grade security</li>
+          </ul></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <label>Outbound Automation</label>
+              <div class="bar-track"><div class="bar-fill" style="width:95%;background:var(--accent1);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>AI Autonomy</label>
+              <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--accent1);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Ease of Setup</label>
+              <div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--accent1);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVENUE.IO -->
+      <div class="platform-card">
+        <div class="card-accent" style="background: linear-gradient(90deg, var(--accent2), #00ffcc);"></div>
+        <div class="card-body">
+          <span class="platform-tag" style="background:rgba(0,210,164,0.15);color:var(--accent2);">RevOps Platform</span>
+          <div class="platform-name">Revenue.io</div>
+          <div class="platform-tagline">revenue.io · Salesforce-Native AI Orchestration</div>
+          <div class="platform-desc">A mature, enterprise-grade platform 100% native to Salesforce. Combines AI-powered dialing, conversation intelligence, real-time coaching, guided cadences, and revenue forecasting into one connected platform. Best suited for scaling mid-market and enterprise B2B sales teams already using Salesforce.</div>
+          <div class="feature-list-wrap"><ul class="feature-list">
+            <li><span class="icon" style="background:rgba(0,210,164,0.2);color:var(--accent2);">▸</span> Moments™ — real-time in-call AI coaching &amp; next-best actions</li>
+            <li><span class="icon" style="background:rgba(0,210,164,0.2);color:var(--accent2);">▸</span> Conversation Intelligence: transcription, analytics, deal coaching</li>
+            <li><span class="icon" style="background:rgba(0,210,164,0.2);color:var(--accent2);">▸</span> Guided Selling cadences — multi-channel sequences (email, call, SMS)</li>
+            <li><span class="icon" style="background:rgba(0,210,164,0.2);color:var(--accent2);">▸</span> Revenue Intelligence dashboards — 100+ Salesforce reports</li>
+            <li><span class="icon" style="background:rgba(0,210,164,0.2);color:var(--accent2);">▸</span> HIPAA, TCPA, GDPR, CCPA, SOC 2 compliant</li>
+          </ul></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <label>CRM Integration Depth</label>
+              <div class="bar-track"><div class="bar-fill" style="width:98%;background:var(--accent2);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Conversation Intelligence</label>
+              <div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--accent2);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Ease of Setup</label>
+              <div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--accent2);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11X.AI -->
+      <div class="platform-card">
+        <div class="card-accent" style="background: linear-gradient(90deg, var(--accent3), #ffb347);"></div>
+        <div class="card-body">
+          <span class="platform-tag" style="background:rgba(255,107,53,0.15);color:var(--accent3);">Digital Workers</span>
+          <div class="platform-name">11x.ai</div>
+          <div class="platform-tagline">11x.ai · Digital Workers, Human Results</div>
+          <div class="platform-desc">11x positions its AI agents as "digital workers" that replicate human SDR and phone agent capabilities. Alice (AI SDR) handles multichannel outbound, while Julian (AI Phone Agent) handles voice. Emphasizes continuous learning, deep CRM integrations, and enterprise adaptability. Trusted by Xerox, Leica, Gupshup, and others.</div>
+          <div class="feature-list-wrap"><ul class="feature-list">
+            <li><span class="icon" style="background:rgba(255,107,53,0.2);color:var(--accent3);">▸</span> Alice — AI SDR: prospect engagement across email, LinkedIn, phone</li>
+            <li><span class="icon" style="background:rgba(255,107,53,0.2);color:var(--accent3);">▸</span> Julian — AI Phone Agent: human-like voice conversations, 24/7</li>
+            <li><span class="icon" style="background:rgba(255,107,53,0.2);color:var(--accent3);">▸</span> Contextual memory — learns and adapts from every interaction</li>
+            <li><span class="icon" style="background:rgba(255,107,53,0.2);color:var(--accent3);">▸</span> Native integrations: HubSpot, Salesforce, Gmail, Slack, LinkedIn</li>
+            <li><span class="icon" style="background:rgba(255,107,53,0.2);color:var(--accent3);">▸</span> Multilingual capabilities · enterprise-ready deployment</li>
+          </ul></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <label>Outbound Automation</label>
+              <div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--accent3);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Learning & Adaptation</label>
+              <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--accent3);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Ease of Setup</label>
+              <div class="bar-track"><div class="bar-fill" style="width:78%;background:var(--accent3);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAALK.AI -->
+      <div class="platform-card">
+        <div class="card-accent" style="background: linear-gradient(90deg, var(--accent4), #80c7ff);"></div>
+        <div class="card-body">
+          <span class="platform-tag" style="background:rgba(59,158,255,0.15);color:var(--accent4);">Contact Center</span>
+          <div class="platform-name">Taalk.ai</div>
+          <div class="platform-tagline">taalk.ai · AI-Powered Contact Center & AI Force</div>
+          <div class="platform-desc">Taalk's AI Force is a contact-center-first platform designed for high-volume inbound and outbound customer engagement at scale. Unique CleanID™ technology maintains spam-free branded numbers. Strong compliance focus with autonomous drip campaigns, QA monitoring, and script adherence. Ideal for call-center operations and regulated industries.</div>
+          <div class="feature-list-wrap"><ul class="feature-list">
+            <li><span class="icon" style="background:rgba(59,158,255,0.2);color:var(--accent4);">▸</span> AI Force: always-on AI agents for inbound qualification, routing, conversion</li>
+            <li><span class="icon" style="background:rgba(59,158,255,0.2);color:var(--accent4);">▸</span> CleanID™: spam-free branded numbers with carrier compliance</li>
+            <li><span class="icon" style="background:rgba(59,158,255,0.2);color:var(--accent4);">▸</span> Multi-channel: voice, SMS, email, chat — all in one platform</li>
+            <li><span class="icon" style="background:rgba(59,158,255,0.2);color:var(--accent4);">▸</span> Adaptive QA &amp; compliance intelligence — real-time monitoring</li>
+            <li><span class="icon" style="background:rgba(59,158,255,0.2);color:var(--accent4);">▸</span> Autonomous drip campaigns &amp; AI Automation Engine™</li>
+          </ul></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <label>Inbound / Call Center Focus</label>
+              <div class="bar-track"><div class="bar-fill" style="width:95%;background:var(--accent4);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Compliance & QA</label>
+              <div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--accent4);"></div></div>
+            </div>
+            <div class="stat-item">
+              <label>Ease of Setup</label>
+              <div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--accent4);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2 · FEATURE COMPARISON TABLE ── -->
+  <section>
+    <h2><span class="section-num">02</span> Feature Comparison Matrix</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:220px;">Feature / Capability</th>
+            <th style="color:var(--accent1)">Alta HQ</th>
+            <th style="color:var(--accent2)">Revenue.io</th>
+            <th style="color:var(--accent3)">11x.ai</th>
+            <th style="color:var(--accent4)">Taalk.ai</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary Use Case</strong></td>
+            <td>Outbound AI Workforce</td>
+            <td>RevOps + Conversation Intel</td>
+            <td>Digital SDR + Phone Agent</td>
+            <td>Contact Center / High-Volume</td>
+          </tr>
+          <tr>
+            <td><strong>AI SDR Agent</strong></td>
+            <td><span class="check">✔</span> Katie</td>
+            <td><span class="partial">Partial</span> Cadences</td>
+            <td><span class="check">✔</span> Alice</td>
+            <td><span class="partial">Partial</span> Lead Qualify</td>
+          </tr>
+          <tr>
+            <td><strong>AI Voice / Calling Agent</strong></td>
+            <td><span class="check">✔</span> Alex</td>
+            <td><span class="check">✔</span> AI Dialer</td>
+            <td><span class="check">✔</span> Julian</td>
+            <td><span class="check">✔</span> AI Force</td>
+          </tr>
+          <tr>
+            <td><strong>Real-Time Coaching</strong></td>
+            <td><span class="cross">✘</span></td>
+            <td><span class="check">✔</span> Moments™</td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="partial">QA-based</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conversation Intelligence</strong></td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="check">✔</span> Full CI</td>
+            <td><span class="check">✔</span> Learning</td>
+            <td><span class="partial">QA Only</span></td>
+          </tr>
+          <tr>
+            <td><strong>Salesforce Native</strong></td>
+            <td><span class="partial">Integration</span></td>
+            <td><span class="check">✔</span> 100% Native</td>
+            <td><span class="partial">Integration</span></td>
+            <td><span class="partial">API</span></td>
+          </tr>
+          <tr>
+            <td><strong>HubSpot Integration</strong></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="cross">✘</span></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="partial">Via API</span></td>
+          </tr>
+          <tr>
+            <td><strong>Multi-Channel Outreach</strong></td>
+            <td><span class="check">✔</span> Email, Call, LinkedIn</td>
+            <td><span class="check">✔</span> Email, Call, SMS</td>
+            <td><span class="check">✔</span> Email, Call, LinkedIn</td>
+            <td><span class="check">✔</span> Voice, SMS, Email, Chat</td>
+          </tr>
+          <tr>
+            <td><strong>Revenue / Pipeline Analytics</strong></td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="check">✔</span> 100+ dashboards</td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="partial">Disposition Reports</span></td>
+          </tr>
+          <tr>
+            <td><strong>Inbound Lead Handling</strong></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="check">✔</span> Hot Leads routing</td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="check">✔</span> Core strength</td>
+          </tr>
+          <tr>
+            <td><strong>24/7 Autonomous Operation</strong></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="cross">✘</span> Rep-assisted</td>
+            <td><span class="check">✔</span></td>
+            <td><span class="check">✔</span></td>
+          </tr>
+          <tr>
+            <td><strong>Compliance Features</strong></td>
+            <td><span class="partial">SOC 2</span></td>
+            <td><span class="check">✔</span> HIPAA, TCPA, GDPR+</td>
+            <td><span class="partial">Enterprise-grade</span></td>
+            <td><span class="check">✔</span> Carrier + Script</td>
+          </tr>
+          <tr>
+            <td><strong>Script / Playbook Adherence</strong></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="check">✔</span> Methodology coaching</td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="check">✔</span> Script Adherence Engine</td>
+          </tr>
+          <tr>
+            <td><strong>Spam Protection (Numbers)</strong></td>
+            <td><span class="cross">✘</span></td>
+            <td><span class="partial">Basic</span></td>
+            <td><span class="cross">✘</span></td>
+            <td><span class="check">✔</span> CleanID™</td>
+          </tr>
+          <tr>
+            <td><strong>Drip / Nurture Campaigns</strong></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="check">✔</span></td>
+            <td><span class="check">✔</span> Autonomous</td>
+          </tr>
+          <tr>
+            <td><strong>RevOps / Forecasting</strong></td>
+            <td><span class="check">✔</span> Luna agent</td>
+            <td><span class="check">✔</span> Full forecasting</td>
+            <td><span class="cross">✘</span></td>
+            <td><span class="cross">✘</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pricing Model</strong></td>
+            <td>Contact for quote</td>
+            <td>~$95+/user/mo (3 tiers)</td>
+            <td>Contact for quote</td>
+            <td>Contact for quote</td>
+          </tr>
+          <tr>
+            <td><strong>Best For</strong></td>
+            <td>SMB–Mid growing sales</td>
+            <td>Mid-Market / Enterprise</td>
+            <td>Growth-stage B2B</td>
+            <td>High-volume contact centers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3 · SCORING ── -->
+  <section>
+    <h2><span class="section-num">03</span> Weighted Evaluation Scores</h2>
+    <div class="score-grid">
+
+      <!-- Alta -->
+      <div class="score-card">
+        <div class="platform-badge" style="color:var(--accent1)">Alta HQ</div>
+        <div class="score-row">
+          <div class="score-label"><span>Outbound Automation</span><span>9 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:90%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>AI Autonomy</span><span>9 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:90%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Integration Depth</span><span>7 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:70%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Analytics & Insights</span><span>6 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:60%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Ease of Use</span><span>7.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Compliance</span><span>7 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:70%;background:var(--accent1);"></div></div>
+        </div>
+        <div class="total-score">
+          <span class="label">Overall Score</span>
+          <span class="value" style="color:var(--accent1)">7.6</span>
+        </div>
+      </div>
+
+      <!-- Revenue.io -->
+      <div class="score-card">
+        <div class="platform-badge" style="color:var(--accent2)">Revenue.io</div>
+        <div class="score-row">
+          <div class="score-label"><span>Outbound Automation</span><span>7.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>AI Autonomy</span><span>6.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:65%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Integration Depth</span><span>9.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:95%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Analytics & Insights</span><span>9.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:95%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Ease of Use</span><span>6.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:65%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Compliance</span><span>9.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:95%;background:var(--accent2);"></div></div>
+        </div>
+        <div class="total-score">
+          <span class="label">Overall Score</span>
+          <span class="value" style="color:var(--accent2)">8.2</span>
+        </div>
+      </div>
+
+      <!-- 11x.ai -->
+      <div class="score-card">
+        <div class="platform-badge" style="color:var(--accent3)">11x.ai</div>
+        <div class="score-row">
+          <div class="score-label"><span>Outbound Automation</span><span>8.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:85%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>AI Autonomy</span><span>9 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:90%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Integration Depth</span><span>8 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:80%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Analytics & Insights</span><span>7 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:70%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Ease of Use</span><span>7.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:75%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Compliance</span><span>7 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:70%;background:var(--accent3);"></div></div>
+        </div>
+        <div class="total-score">
+          <span class="label">Overall Score</span>
+          <span class="value" style="color:var(--accent3)">7.8</span>
+        </div>
+      </div>
+
+      <!-- Taalk.ai -->
+      <div class="score-card">
+        <div class="platform-badge" style="color:var(--accent4)">Taalk.ai</div>
+        <div class="score-row">
+          <div class="score-label"><span>Outbound Automation</span><span>8 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:80%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>AI Autonomy</span><span>8.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:85%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Integration Depth</span><span>6.5 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:65%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Analytics & Insights</span><span>7 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:70%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Ease of Use</span><span>8 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:80%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Compliance</span><span>9 / 10</span></div>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:90%;background:var(--accent4);"></div></div>
+        </div>
+        <div class="total-score">
+          <span class="label">Overall Score</span>
+          <span class="value" style="color:var(--accent4)">7.8</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4 · USE CASE MATRIX ── -->
+  <section>
+    <h2><span class="section-num">04</span> Use Case Fit Matrix</h2>
+    <div class="use-case-grid">
+      <div class="use-case-card">
+        <h4><span class="emoji">🚀</span> Outbound Pipeline Generation</h4>
+        <ul class="use-case-list">
+          <li>Alta HQ <span class="uc-pill best">Best</span></li>
+          <li>11x.ai <span class="uc-pill best">Best</span></li>
+          <li>Revenue.io <span class="uc-pill good">Good</span></li>
+          <li>Taalk.ai <span class="uc-pill good">Good</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">📞</span> High-Volume Call Operations</h4>
+        <ul class="use-case-list">
+          <li>Taalk.ai <span class="uc-pill best">Best</span></li>
+          <li>Revenue.io <span class="uc-pill best">Best</span></li>
+          <li>Alta HQ <span class="uc-pill good">Good</span></li>
+          <li>11x.ai <span class="uc-pill good">Good</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">🏢</span> Enterprise Salesforce Teams</h4>
+        <ul class="use-case-list">
+          <li>Revenue.io <span class="uc-pill best">Best</span></li>
+          <li>11x.ai <span class="uc-pill good">Good</span></li>
+          <li>Alta HQ <span class="uc-pill good">Good</span></li>
+          <li>Taalk.ai <span class="uc-pill ok">Limited</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">📊</span> Sales Coaching & Analytics</h4>
+        <ul class="use-case-list">
+          <li>Revenue.io <span class="uc-pill best">Best</span></li>
+          <li>11x.ai <span class="uc-pill good">Good</span></li>
+          <li>Taalk.ai <span class="uc-pill good">Good</span></li>
+          <li>Alta HQ <span class="uc-pill ok">Basic</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">🏦</span> Regulated Industries (HIPAA/TCPA)</h4>
+        <ul class="use-case-list">
+          <li>Revenue.io <span class="uc-pill best">Best</span></li>
+          <li>Taalk.ai <span class="uc-pill best">Best</span></li>
+          <li>Alta HQ <span class="uc-pill good">Good</span></li>
+          <li>11x.ai <span class="uc-pill good">Good</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">🌱</span> SMB / Startup Teams</h4>
+        <ul class="use-case-list">
+          <li>Alta HQ <span class="uc-pill best">Best</span></li>
+          <li>11x.ai <span class="uc-pill best">Best</span></li>
+          <li>Taalk.ai <span class="uc-pill good">Good</span></li>
+          <li>Revenue.io <span class="uc-pill ok">Heavy</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">⚙️</span> RevOps Automation & Forecasting</h4>
+        <ul class="use-case-list">
+          <li>Revenue.io <span class="uc-pill best">Best</span></li>
+          <li>Alta HQ <span class="uc-pill good">Good</span></li>
+          <li>11x.ai <span class="uc-pill ok">Limited</span></li>
+          <li>Taalk.ai <span class="uc-pill ok">Limited</span></li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <h4><span class="emoji">🌐</span> Multilingual / Global Outreach</h4>
+        <ul class="use-case-list">
+          <li>11x.ai <span class="uc-pill best">Best</span></li>
+          <li>Taalk.ai <span class="uc-pill good">Good</span></li>
+          <li>Alta HQ <span class="uc-pill good">Good</span></li>
+          <li>Revenue.io <span class="uc-pill ok">Limited</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5 · KEY DIFFERENTIATORS ── -->
+  <section>
+    <h2><span class="section-num">05</span> Key Differentiators</h2>
+    <div class="platform-grid">
+      <div style="background:var(--surface);border:1px solid rgba(108,99,255,0.25);border-radius:14px;padding:24px;">
+        <div style="color:var(--accent1);font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;">✦ Alta HQ — Unique Strength</div>
+        <p style="font-size:13.5px;color:#adb1c4;line-height:1.7;">Alta's tri-agent model (Katie + Alex + Luna) means it covers outbound prospecting, voice calling, AND RevOps in one platform — making it the most "full workforce" replacement out of the four. Luna as a dedicated RevOps AI agent is a standout differentiator no competitor directly matches.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(0,210,164,0.25);border-radius:14px;padding:24px;">
+        <div style="color:var(--accent2);font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;">✦ Revenue.io — Unique Strength</div>
+        <p style="font-size:13.5px;color:#adb1c4;line-height:1.7;">The only 100% Salesforce-native platform in this group. Moments™ real-time AI coaching during live calls is unmatched. For teams already deep in Salesforce with 15+ reps, it provides unparalleled data depth — every call, email, and meeting captured automatically with 100+ reports.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(255,107,53,0.25);border-radius:14px;padding:24px;">
+        <div style="color:var(--accent3);font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;">✦ 11x.ai — Unique Strength</div>
+        <p style="font-size:13.5px;color:#adb1c4;line-height:1.7;">Best-in-class continuous learning architecture — Alice and Julian genuinely improve with every interaction by building contextual memory. The "digital worker" framing with multilingual support makes it the strongest choice for global-first or fast-scaling teams who want agents that get smarter over time.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(59,158,255,0.25);border-radius:14px;padding:24px;">
+        <div style="color:var(--accent4);font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;">✦ Taalk.ai — Unique Strength</div>
+        <p style="font-size:13.5px;color:#adb1c4;line-height:1.7;">CleanID™ spam-protection for branded numbers is completely unique in this set. For businesses doing high-volume outbound calling — insurance, real estate, financial services — maintaining deliverability and spam-free reputation is worth significant ROI on its own. Script adherence + adaptive QA is also best-in-class for regulated environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 6 · RECOMMENDATION ── -->
+  <section>
+    <h2><span class="section-num">06</span> Decision Framework</h2>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="rec-banner">
+        <div>
+          <h3>🏆 Best Overall · Revenue.io</h3>
+          <p>For established sales organizations using Salesforce, Revenue.io is the most complete, proven, and deeply integrated platform. Its combination of real-time coaching, conversation intelligence, guided cadences, and revenue forecasting provides measurable ROI at scale. Competitors from Salesloft and Gong have been beaten by users who switched to Revenue.io twice over. Ideal for 15+ seat teams in B2B tech, financial services, or logistics.</p>
+        </div>
+        <div class="rec-badge">
+          <div class="winner" style="color:var(--accent2)">8.2 / 10</div>
+          <div class="subtitle">Top Overall Score</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:8px;color:var(--accent3);">🥇 Best for Startups / Growth Teams → 11x.ai</div>
+          <p style="font-size:13px;color:#adb1c4;">Alice + Julian with self-learning and multilingual support make 11x the smartest long-term bet for growth-stage companies that want agents that improve over time without heavy configuration.</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:8px;color:var(--accent1);">🥇 Best Full AI Workforce → Alta HQ</div>
+          <p style="font-size:13px;color:#adb1c4;">If you want to replace or augment an entire SDR function end-to-end (prospecting + calling + RevOps) with the least human touchpoints, Alta's three-agent model is the most complete autonomous solution.</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:8px;color:var(--accent4);">🥇 Best for Contact Centers → Taalk.ai</div>
+          <p style="font-size:13px;color:#adb1c4;">For organizations running high-volume inbound/outbound call operations — especially in regulated sectors — Taalk's CleanID™, compliance engine, and QA tools are unmatched by the other three platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer style="margin-top:80px;padding:32px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+  <p style="font-size:12px;color:var(--muted);">Prepared February 2026 · Based on publicly available information from each platform's website</p>
+  <p style="font-size:12px;color:var(--muted);">AI Sales & Revenue Platform Competitive Analysis</p>
+</footer>
+
+</body>
+</html>
